@@ -1,19 +1,21 @@
 import { useEffect, useState } from 'react';
 import { 
-    Container, 
+    Container,
+    Titulo,
+    DivInput,
+    Input,
+    Button,
     ListaRepo, 
+    ContainerLinguagem,
+    ContainerDescricao,
     ContainerLista, 
+    RepositorioImg,
     Informacoes,
-    ParagrafosInfo,
-    LinhaInfos,
+    ParagrafosDesc,
     TopicosLinha,
     Topicos,
-    DivInput,
-    Button,
-    Input,
-    ParagrafosDesc,
-    RepositorioImg,
-    ContainerLinguagem,
+    LinhaInfos,
+    ParagrafosInfo,
     ContadorPaginacao
 } from './style'
 import { GoRepo } from 'react-icons/go';
@@ -88,32 +90,29 @@ const Home = () => {
     return ( 
 
     <Container>
-        <h1>Repositórios</h1>
+        <Titulo>Repositórios</Titulo>
         <DivInput>
             <Input type="text" onChange={(e) => setLinguagemTemp(e.target.value)} placeholder="Digite a tecnologia"
                 value={linguagemTemp} ></Input>
             <Button onClick={atualizaPesquisa} >Pesquisar</Button>
         </DivInput>
-
         <ListaRepo>
             <ContainerLinguagem>
                 {
                     sobreLinguagem.map(sobre => {
                         return(
-                            <div>
-                                <h1>
-                                {sobre.name}
-                            </h1>
-                            <p>
-                                {sobre.short_description}
-                            </p>
-                            </div>
+                            <ContainerDescricao>
+                                <Titulo>
+                                    {sobre.name}
+                                </Titulo>
+                                <p>
+                                    {sobre.short_description}
+                                </p>
+                            </ContainerDescricao>
                         )
                     })
                 }
-
             </ContainerLinguagem>
-                
             {paginacaoRepositorio.map(repo => {
                 return(
                     
@@ -142,11 +141,8 @@ const Home = () => {
                                         </Topicos>
                                     )
                                 })}
-
                             </TopicosLinha>
-
                             <LinhaInfos>
-
                                 <ParagrafosInfo> 
                                     <div>
                                         <FaRegStar/>
@@ -157,13 +153,8 @@ const Home = () => {
                                     </div>
                                     {retornoLinguagem(repo.language)}
                                 </ParagrafosInfo>
-
                             </LinhaInfos>
-                            
                         </Informacoes>
-
-
-
                     </ContainerLista>
 
                 )
