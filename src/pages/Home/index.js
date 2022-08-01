@@ -50,9 +50,9 @@ const Home = () => {
 
 
     const atualizaPesquisa = () => {
+        setPagina(1)
         setLinguagem(linguagemTemp)
         setLinguagemTemp('')
-        setPagina(1)
     }
 
     const retornoLinguagem =(linguagem) => {
@@ -81,7 +81,7 @@ const Home = () => {
     }
 
     const proximaPagina = () => {
-        if(pagina >= 1 && paginacaoRepositorio.length >= 10){
+        if(pagina >= 1 && paginacaoRepositorio.length === 10){
             setPagina(pagina + 1);
         }
     }
@@ -92,12 +92,17 @@ const Home = () => {
     <Container>
         <Titulo>Repositórios</Titulo>
         <DivInput>
-            <Input type="text" onChange={(e) => setLinguagemTemp(e.target.value)} placeholder="Digite a tecnologia"
-                value={linguagemTemp} ></Input>
-            <Button onClick={atualizaPesquisa} >Pesquisar</Button>
+            <Input type="text" 
+            onChange={(e) => setLinguagemTemp(e.target.value)}
+            placeholder="Digite a tecnologia"
+            value={linguagemTemp} 
+            data-testid="input"></Input>
+            <Button 
+            data-testid="botao-pesquisa"
+            onClick={atualizaPesquisa} >Pesquisar</Button>
         </DivInput>
         <ListaRepo>
-            <ContainerLinguagem>
+            <ContainerLinguagem data-testid="linguagem">
                 {
                     sobreLinguagem.map(sobre => {
                         return(
@@ -161,9 +166,13 @@ const Home = () => {
             })}
         </ListaRepo>
         <ContadorPaginacao>
-            <Button onClick={paginaAnterior} >Anterior</Button>
+            <Button 
+            onClick={paginaAnterior} 
+            data-testid="pagina-anterior">Anterior</Button>
 
-            <Button onClick={proximaPagina}>Proxima</Button>
+            <Button 
+            onClick={proximaPagina}
+            data-testid="pagina-seguinte">Próxima</Button>
         </ContadorPaginacao>
     </Container>
     );
