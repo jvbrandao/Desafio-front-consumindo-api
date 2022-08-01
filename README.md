@@ -1,4 +1,3 @@
-# Readme desafio field
 
 ## Projeto de consumo da API do github e retorno das informações.
 
