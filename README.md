@@ -42,5 +42,7 @@ Fiz o teste unitário dos botões da página( pesquisa, página anterior e pági
 Para utilizar o projeto na sua máquina, faça o clone do projeto e então execute o comando a seguir para iniciar a sua aplicação:
 
 ```html
+yarns install
 yarn start
 ```
+No navegador abra a url http://localhost:3000

@@ -29,6 +29,10 @@ const Home = () => {
     const [pagina, setPagina] = useState(1)
     const [sobreLinguagem, setSobreLinguagem] = useState([])
 
+    const generateID = () => Math.round(Math.random() * 1000)
+    console.log(generateID())
+
+
     useEffect(() => {
         fetch(`https://api.github.com/search/repositories?q=${linguagem}&page=${pagina}&per_page=10`)
         .then(response => response.json())
@@ -102,11 +106,11 @@ const Home = () => {
             onClick={atualizaPesquisa} >Pesquisar</Button>
         </DivInput>
         <ListaRepo>
-            <ContainerLinguagem data-testid="linguagem">
+            <ContainerLinguagem data-testid="linguagem" key={generateID}>
                 {
                     sobreLinguagem.map(sobre => {
                         return(
-                            <ContainerDescricao>
+                            <ContainerDescricao key={generateID}>
                                 <Titulo>
                                     {sobre.name}
                                 </Titulo>
