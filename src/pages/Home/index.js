@@ -106,7 +106,7 @@ const Home = () => {
             onClick={atualizaPesquisa} >Pesquisar</Button>
         </DivInput>
         <ListaRepo>
-            <ContainerLinguagem data-testid="linguagem" key={generateID}>
+            <ContainerLinguagem data-testid="linguagem" >
                 {
                     sobreLinguagem.map(sobre => {
                         return(
